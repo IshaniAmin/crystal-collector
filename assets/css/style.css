@@ -1,0 +1,33 @@
+/*
+body {
+	background-image: url("../images/background.jpg");
+}
+
+#header {
+	background-color: white;
+}
+
+#directions {
+	background-color: white;
+}
+
+#score {
+	background-color: white;
+}
+
+#randomNumber {
+	background-color: white;
+}
+
+#crystalImg {
+	background-color: white;
+}
+
+#guessedScore {
+	background-color: white;
+}*/
+
+.crystalImage {
+	width: 75px;
+	height: 75px;
+}
