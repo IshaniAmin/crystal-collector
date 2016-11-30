@@ -20,9 +20,8 @@ $(document).ready(function() {
 
 	var images = ['../week-4-game/assets/images/blue_gem.jpg', '../week-4-game/assets/images/green_gem.jpg', '../week-4-game/assets/images/pink_gem.jpg', '../week-4-game/assets/images/yellow_gem.jpg']
 
-	$('#wins').text('Wins: ' + wins);
-	$('#losses').text('Losses: ' + losses);
 
+	//put 4 different images with random values between 1 and 12
 	for (var i = 0; i < images.length; i++) {
     	var imageCrystal = $("<img>");
     	imageCrystal.addClass("crystalImage");
@@ -31,27 +30,32 @@ $(document).ready(function() {
     	$("#crystalImg").append(imageCrystal);
 	}
 
-
-	function startGame() {
-	
-			function getRandomInt(min, max) {
-    			return Math.floor(Math.random() * (max - min + 1)) + min;
-			}
-			randomNum = getRandomInt(19, 120);
-
-			$('#randomNumber').html('Target number: ' + randomNum);
-			$('#guessedScore').html('Your score: ' + yourGuess);
-
-			$(".crystalImage").on("click", function() {
-				var crystalvalue = $(this).data("crystalvalue");
-				yourGuess += crystalvalue;
-				console.log(crystalvalue);
-				$('#guessedScore').html('Your score: ' + yourGuess);
-				console.log(yourGuess);
-			});
+	//pick random interger beteer 19 and 120
+	function getRandomInt(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	if (yourGuess == randomNum) {
+
+	function startGame() {
+
+		randomNum = getRandomInt(19, 120);
+
+		$('#wins').text('Wins: ' + wins);
+		$('#losses').text('Losses: ' + losses);
+
+		$('#randomNumber').html('Target number: ' + randomNum);
+		$('#guessedScore').html('Your score: ' + yourGuess);
+
+		$(".crystalImage").on("click", function() {
+			var crystalvalue = $(this).data("crystalvalue");
+			yourGuess += crystalvalue;
+			$('#guessedScore').html('Your score: ' + yourGuess);
+		});
+	}
+
+	startGame();
+
+	if (yourGuess === randomNum) {
 		$('#winOrLose').html("You won!!");
 		wins++;
 		yourGuess = 0
@@ -63,10 +67,6 @@ $(document).ready(function() {
 		yourGuess = 0
 		startGame();
 	}
-
-
-	startGame();
-
 
 
 });
