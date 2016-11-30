@@ -30,43 +30,48 @@ $(document).ready(function() {
     	$("#crystalImg").append(imageCrystal);
 	}
 
-	//pick random interger beteer 19 and 120
-	function getRandomInt(min, max) {
-    	return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-
 
 	function startGame() {
 
+		function getRandomInt(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
 		randomNum = getRandomInt(19, 120);
 
-		$('#wins').text('Wins: ' + wins);
-		$('#losses').text('Losses: ' + losses);
-
 		$('#randomNumber').html('Target number: ' + randomNum);
-		$('#guessedScore').html('Your score: ' + yourGuess);
+		$('#guessedScore').html('Your score: ' + 0);
+
 
 		$(".crystalImage").on("click", function() {
 			var crystalvalue = $(this).data("crystalvalue");
 			yourGuess += crystalvalue;
 			$('#guessedScore').html('Your score: ' + yourGuess);
+
+
+		if (yourGuess == randomNum) {
+			$('#winOrLose').html("You won!!");
+			wins++;
+			$('#wins').text('Wins: ' + wins);
+			yourGuess = 0;
+			$('#guessedScore').html('Your score: ' + yourGuess);
+			randomNum = getRandomInt(19, 120);
+			$('#randomNumber').html('Target number: ' + randomNum);
+
+		} else if (yourGuess > randomNum) {
+			$('#winOrLose').html("You lost!!");
+			losses++;
+			$('#losses').text('Losses: ' + losses);
+			yourGuess = 0;
+			$('#guessedScore').html('Your score: ' + yourGuess);
+			randomNum = getRandomInt(19, 120);
+			$('#randomNumber').html('Target number: ' + randomNum);
+		}	
+		
 		});
 	}
 
 	startGame();
 
-	if (yourGuess === randomNum) {
-		$('#winOrLose').html("You won!!");
-		wins++;
-		yourGuess = 0
-		startGame();
-
-	} else if (yourGuess > randomNum) {
-		$('#winOrLose').html("You lost!!");
-		losses++;
-		yourGuess = 0
-		startGame();
-	}
 
 
 });
