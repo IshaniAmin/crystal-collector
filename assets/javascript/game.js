@@ -41,7 +41,6 @@ $(document).ready(function() {
 			randomNum = getRandomInt(19, 120);
 			$('#randomNumber').html('Target number: ' + randomNum);
 		}
-
 		
 		randomNum = getRandomInt(19, 120);
 		$('#randomNumber').html('Target number: ' + randomNum);
