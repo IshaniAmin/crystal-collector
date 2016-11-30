@@ -43,14 +43,13 @@ $(document).ready(function() {
 			$('#guessedScore').html('Your score: ' + yourGuess);
 
 			$(".crystalImage").on("click", function() {
-				var crystalvalue = parseInt($('#imageCrystal').data("crystalvalue"));
+				var crystalvalue = $(this).data("crystalvalue");
 				yourGuess += crystalvalue;
+				console.log(crystalvalue);
 				$('#guessedScore').html('Your score: ' + yourGuess);
+				console.log(yourGuess);
 			});
 	}
-
-	startGame();
-
 
 	if (yourGuess == randomNum) {
 		$('#winOrLose').html("You won!!");
@@ -64,6 +63,9 @@ $(document).ready(function() {
 		yourGuess = 0
 		startGame();
 	}
+
+
+	startGame();
 
 
 
