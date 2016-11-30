@@ -17,56 +17,82 @@ $(document).ready(function() {
 	var losses = 0;
 	var yourGuess = 0;
 	var randomNum;
-
 	var images = ['../week-4-game/assets/images/blue_gem.jpg', '../week-4-game/assets/images/green_gem.jpg', '../week-4-game/assets/images/pink_gem.jpg', '../week-4-game/assets/images/yellow_gem.jpg']
 
 
-		for (var i = 0; i < images.length; i++) {
-			var randomCrystalNumber = Math.floor(Math.random()*12+1);
-    		var imageCrystal = $("<img>");
-    		imageCrystal.addClass("crystalImage");
-    		imageCrystal.attr("src", images[i]);
-    		imageCrystal.attr("data-crystalvalue", randomCrystalNumber);
-    		$("#crystalImg").append(imageCrystal);
-		}
-
-
+	// random integer is chose for target score
+	//----------------------------------------------------------------------------------------
 		function getRandomInt(min, max) {
-    		return Math.floor(Math.random() * (max - min + 1)) + min;
+    			return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			randomNum = getRandomInt(19, 120);
+			$('#randomNumber').html('Target number: ' + randomNum);
+			$('#guessedScore').html('Your score: ' + 0);
+	//----------------------------------------------------------------------------------------
+
+
+
+	// images are placed on page and function is called
+	//----------------------------------------------------------------------------------------
+		function getImages() {
+			for (var i = 0; i < images.length; i++) {
+					var randomCrystalNumber = Math.floor(Math.random()*12+1);
+    				var imageCrystal = $("<img>");
+    				imageCrystal.addClass("crystalImage");
+    				imageCrystal.attr("src", images[i]);
+    				imageCrystal.attr("data-crystalvalue", randomCrystalNumber);
+    				$("#crystalImg").append(imageCrystal);
+				}
 		}
 
+		getImages();
+	//----------------------------------------------------------------------------------------
+
+
+
+	// game is reset
+	//----------------------------------------------------------------------------------------
 		function resetGame() {
 			yourGuess = 0;
 			$('#guessedScore').html('Your score: ' + yourGuess);
 			randomNum = getRandomInt(19, 120);
 			$('#randomNumber').html('Target number: ' + randomNum);
+			// $("#crystalImg").empty();
+			// getImages();
+			//whenever the #crystalImg empties and getImages() reloads, the click doesn't work
 		}
-		
-		randomNum = getRandomInt(19, 120);
-		$('#randomNumber').html('Target number: ' + randomNum);
-		$('#guessedScore').html('Your score: ' + 0);
+	//----------------------------------------------------------------------------------------
 
 
+
+	// when gem is clicked, the number is added to yourGuess
+	//----------------------------------------------------------------------------------------
 		$(".crystalImage").on("click", function() {
 			var crystalvalue = $(this).data("crystalvalue");
 			yourGuess += crystalvalue;
 			$('#guessedScore').html('Your score: ' + yourGuess);
+	//----------------------------------------------------------------------------------------
 
 
+
+	// if else statement to see if won or lost
+	//----------------------------------------------------------------------------------------
 		if (yourGuess == randomNum) {
 			$('#winOrLose').html("You won!!");
 			wins++;
-			$('#wins').text('Wins: ' + wins);
+			$('#wins').html('Wins: ' + wins);
 			resetGame()
 
 		} else if (yourGuess > randomNum) {
 			$('#winOrLose').html("You lost!!");
 			losses++;
-			$('#losses').text('Losses: ' + losses);
+			$('#losses').html('Losses: ' + losses);
 			resetGame()
 		}	
 		
 		});
+	//----------------------------------------------------------------------------------------
 
 
 });
