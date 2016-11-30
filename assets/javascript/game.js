@@ -21,7 +21,6 @@ $(document).ready(function() {
 
 
 	// random integer is chose for target score
-	//----------------------------------------------------------------------------------------
 		function getRandomInt(min, max) {
     			return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
@@ -29,12 +28,10 @@ $(document).ready(function() {
 			randomNum = getRandomInt(19, 120);
 			$('#randomNumber').html('Target number: ' + randomNum);
 			$('#guessedScore').html('Your score: ' + 0);
-	//----------------------------------------------------------------------------------------
 
 
 
 	// images are placed on page and function is called
-	//----------------------------------------------------------------------------------------
 		function getImages() {
 			for (var i = 0; i < images.length; i++) {
 					var randomCrystalNumber = Math.floor(Math.random()*12+1);
@@ -47,37 +44,31 @@ $(document).ready(function() {
 		}
 
 		getImages();
-	//----------------------------------------------------------------------------------------
 
 
 
 	// game is reset
-	//----------------------------------------------------------------------------------------
 		function resetGame() {
 			yourGuess = 0;
 			$('#guessedScore').html('Your score: ' + yourGuess);
 			randomNum = getRandomInt(19, 120);
 			$('#randomNumber').html('Target number: ' + randomNum);
-			// $("#crystalImg").empty();
-			// getImages();
+			$("#crystalImg").empty();
+			getImages();
 			//whenever the #crystalImg empties and getImages() reloads, the click doesn't work
 		}
-	//----------------------------------------------------------------------------------------
 
 
 
 	// when gem is clicked, the number is added to yourGuess
-	//----------------------------------------------------------------------------------------
 		$(".crystalImage").on("click", function() {
 			var crystalvalue = $(this).data("crystalvalue");
 			yourGuess += crystalvalue;
 			$('#guessedScore').html('Your score: ' + yourGuess);
-	//----------------------------------------------------------------------------------------
 
 
 
 	// if else statement to see if won or lost
-	//----------------------------------------------------------------------------------------
 		if (yourGuess == randomNum) {
 			$('#winOrLose').html("You won!!");
 			wins++;
@@ -92,7 +83,6 @@ $(document).ready(function() {
 		}	
 		
 		});
-	//----------------------------------------------------------------------------------------
 
 
 });
