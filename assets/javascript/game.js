@@ -21,23 +21,29 @@ $(document).ready(function() {
 	var images = ['../week-4-game/assets/images/blue_gem.jpg', '../week-4-game/assets/images/green_gem.jpg', '../week-4-game/assets/images/pink_gem.jpg', '../week-4-game/assets/images/yellow_gem.jpg']
 
 
-	//put 4 different images with random values between 1 and 12
-	for (var i = 0; i < images.length; i++) {
-    	var imageCrystal = $("<img>");
-    	imageCrystal.addClass("crystalImage");
-    	imageCrystal.attr("src", images[i]);
-    	imageCrystal.attr("data-crystalvalue", Math.floor(Math.random()*12+1));
-    	$("#crystalImg").append(imageCrystal);
-	}
+		for (var i = 0; i < images.length; i++) {
+			var randomCrystalNumber = Math.floor(Math.random()*12+1);
+    		var imageCrystal = $("<img>");
+    		imageCrystal.addClass("crystalImage");
+    		imageCrystal.attr("src", images[i]);
+    		imageCrystal.attr("data-crystalvalue", randomCrystalNumber);
+    		$("#crystalImg").append(imageCrystal);
+		}
 
-
-	function startGame() {
 
 		function getRandomInt(min, max) {
-    	return Math.floor(Math.random() * (max - min + 1)) + min;
+    		return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
-		randomNum = getRandomInt(19, 120);
 
+		function resetGame() {
+			yourGuess = 0;
+			$('#guessedScore').html('Your score: ' + yourGuess);
+			randomNum = getRandomInt(19, 120);
+			$('#randomNumber').html('Target number: ' + randomNum);
+		}
+
+		
+		randomNum = getRandomInt(19, 120);
 		$('#randomNumber').html('Target number: ' + randomNum);
 		$('#guessedScore').html('Your score: ' + 0);
 
@@ -52,26 +58,16 @@ $(document).ready(function() {
 			$('#winOrLose').html("You won!!");
 			wins++;
 			$('#wins').text('Wins: ' + wins);
-			yourGuess = 0;
-			$('#guessedScore').html('Your score: ' + yourGuess);
-			randomNum = getRandomInt(19, 120);
-			$('#randomNumber').html('Target number: ' + randomNum);
+			resetGame()
 
 		} else if (yourGuess > randomNum) {
 			$('#winOrLose').html("You lost!!");
 			losses++;
 			$('#losses').text('Losses: ' + losses);
-			yourGuess = 0;
-			$('#guessedScore').html('Your score: ' + yourGuess);
-			randomNum = getRandomInt(19, 120);
-			$('#randomNumber').html('Target number: ' + randomNum);
+			resetGame()
 		}	
 		
 		});
-	}
-
-	startGame();
-
 
 
 });
