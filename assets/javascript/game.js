@@ -18,7 +18,7 @@ $(document).ready(function() {
 	var losses = 0;
 	var yourGuess = 0;
 	var randomNum;
-	var images = ['../assets/images/blue_gem.jpg', '../assets/images/green_gem.jpg', '../assets/images/pink_gem.jpg', '../images/yellow_gem.jpg']
+	var images = ['../assets/images/blue_gem.jpg', '../assets/images/green_gem.jpg', '../assets/images/pink_gem.jpg', '../assets/images/yellow_gem.jpg']
 
 
 	// random integer is chose for target score
