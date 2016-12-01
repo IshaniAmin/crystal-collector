@@ -27,7 +27,7 @@ $(document).ready(function() {
 	}
 
 	randomNum = getRandomInt(19, 120);
-	$('#randomNumber').html('Target number: ' + randomNum);
+	$('#targetNumber').html('Target number: ' + randomNum);
 	$('#guessedScore').html('Your score: ' + 0);
 
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
 		yourGuess = 0;
 		$('#guessedScore').html('Your score: ' + yourGuess);
 		randomNum = getRandomInt(19, 120);
-		$('#randomNumber').html('Target number: ' + randomNum);
+		$('#targetNumber').html('Target number: ' + randomNum);
 		$("#crystalImg").empty();
 		getImages();
 		//whenever the #crystalImg empties and getImages() reloads, the click doesn't work
@@ -76,14 +76,12 @@ $(document).ready(function() {
 			wins++;
 			$('#wins').html('Wins: ' + wins);
 			resetGame();
-
-
+			
 		} else if (yourGuess > randomNum) {
 			$('#winOrLose').html("You lost!!");
 			losses++;
 			$('#losses').html('Losses: ' + losses);
 			resetGame();
-
 		}	
 		
 	});

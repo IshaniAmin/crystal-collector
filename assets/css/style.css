@@ -1,33 +1,72 @@
-/*
+
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background-image: url("../images/background.jpg");
+	text-align: center;
+}
+
+div {
+	background-color: white;
 }
 
 #header {
 	background-color: white;
+	font-family: 'Indie Flower', cursive;
+	font-size: 60px;
+	border: 2px dodgerblue solid;
 }
 
 #directions {
-	background-color: white;
+	border: 2px dodgerblue solid;
+}
+
+.paragraph {
+	font-family: 'Indie Flower', cursive;
+	font-size: 15px;
+}
+
+#instructions {
+	font-family: 'Indie Flower', cursive;
+	font-size: 25px;
+}
+
+#winOrLose {
+	font-family: 'Indie Flower', cursive;
+	font-size: 25px;
+	border: 2px dodgerblue solid;
+	border-top: none;
 }
 
 #score {
-	background-color: white;
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+	border: 2px dodgerblue solid;
+	border-top: none;
 }
 
-#randomNumber {
-	background-color: white;
+#targetNumber {
+	font-family: 'Indie Flower', cursive;
+	font-size: 25px;
+	border: 2px dodgerblue solid;
+	border-top: none;
 }
 
 #crystalImg {
-	background-color: white;
+	border: 2px dodgerblue solid;
+	border-top: none;
 }
-
-#guessedScore {
-	background-color: white;
-}*/
 
 .crystalImage {
 	width: 75px;
 	height: 75px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#guessedScore {
+	font-family: 'Indie Flower', cursive;
+	font-size: 25px;
 }
