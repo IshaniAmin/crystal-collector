@@ -18,7 +18,7 @@ $(document).ready(function() {
 	var losses = 0;
 	var yourGuess = 0;
 	var randomNum;
-	var images = ['../week-4-game/assets/images/blue_gem.jpg', '../week-4-game/assets/images/green_gem.jpg', '../week-4-game/assets/images/pink_gem.jpg', '../week-4-game/assets/images/yellow_gem.jpg']
+	var images = ['../images/blue_gem.jpg', '../images/green_gem.jpg', '../images/pink_gem.jpg', '../images/yellow_gem.jpg']
 
 
 	// random integer is chose for target score
